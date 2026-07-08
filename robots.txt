@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Sitemap: https://bnmdfgerty.github.io/sd-garage/sitemap.xml
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
