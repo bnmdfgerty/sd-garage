@@ -1,41 +1,44 @@
 /* ═══════════════════════════════════════════
-   SD Garage — JS v2
-   Mobile menu, scroll header, reveal animations
+   SD Garage — JS v4
    ═══════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  /* ─── Mobile menu toggle ─── */
+  /* ─── Мобильное меню ─── */
   var burger = document.getElementById('burger');
   var mobileMenu = document.getElementById('mobile-menu');
-  var burgerIcon = document.getElementById('burger-icon');
+  var burgerLines = document.getElementById('burger-icon');
 
   if (burger && mobileMenu) {
     burger.addEventListener('click', function () {
       var isOpen = mobileMenu.classList.toggle('is-open');
       burger.setAttribute('aria-expanded', isOpen);
-      burgerIcon.textContent = isOpen ? '\u2715' : '\u2630';
+      if (burgerLines) {
+        if (isOpen) {
+          burgerLines.classList.add('is-open');
+        } else {
+          burgerLines.classList.remove('is-open');
+        }
+      }
     });
 
-    /* Закрыть мобильное меню при клике на ссылку */
     var mobileLinks = mobileMenu.querySelectorAll('a[href^="#"]');
     mobileLinks.forEach(function (link) {
       link.addEventListener('click', function () {
         mobileMenu.classList.remove('is-open');
         burger.setAttribute('aria-expanded', 'false');
-        burgerIcon.textContent = '\u2630';
+        if (burgerLines) burgerLines.classList.remove('is-open');
       });
     });
   }
 
-  /* ─── Header scroll effect ─── */
+  /* ─── Эффект хедера при скролле ─── */
   var header = document.getElementById('header');
-  var scrollThreshold = 50;
 
   function onScroll() {
     if (!header) return;
-    if (window.scrollY > scrollThreshold) {
+    if (window.scrollY > 50) {
       header.classList.add('is-scrolled');
     } else {
       header.classList.remove('is-scrolled');
@@ -45,7 +48,7 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ─── Smooth scroll ─── */
+  /* ─── Плавный скролл ─── */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       var targetId = this.getAttribute('href');
@@ -58,7 +61,7 @@
     });
   });
 
-  /* ─── Reveal on scroll (Intersection Observer) ─── */
+  /* ─── Появление элементов при скролле ─── */
   var revealElements = document.querySelectorAll(
     '.section__header, .card, .step, .faq__item, .contacts-card, .contacts-card__banner'
   );
@@ -76,15 +79,14 @@
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
     });
 
     revealElements.forEach(function (el) {
       observer.observe(el);
     });
   } else {
-    /* Фоллбэк — показать всё сразу */
     revealElements.forEach(function (el) {
       el.classList.add('is-visible');
     });
