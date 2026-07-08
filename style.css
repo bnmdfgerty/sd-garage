@@ -956,7 +956,7 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 @media (min-width: 768px) {
   .contacts-grid { grid-template-columns: 1fr 1fr; }
