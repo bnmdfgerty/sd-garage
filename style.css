@@ -210,11 +210,15 @@ img { max-width: 100%; display: block; }
   gap: 0.5rem;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--muted-light);
-  transition: color var(--transition);
+  color: white;
+  background: var(--accent);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition);
+  white-space: nowrap;
 }
-.header__phone:hover { color: var(--white); }
-.header__phone svg { flex-shrink: 0; opacity: 0.7; }
+.header__phone:hover { background: #ea580c; }
+.header__phone svg { flex-shrink: 0; }
 
 /* Burger — три линии */
 .header__burger {
@@ -951,6 +955,29 @@ img { max-width: 100%; display: block; }
   margin-top: 0.25rem;
   font-size: 0.75rem;
   color: var(--muted);
+}
+
+.contacts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .contacts-grid { grid-template-columns: 1fr 1fr; }
+  .contacts-grid .contacts-card { margin: 0; }
+}
+.contacts-grid > div:last-child {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  min-height: 300px;
+}
+.contacts-grid > div:last-child iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
 }
 
 @media (min-width: 640px) {
