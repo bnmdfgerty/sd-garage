@@ -171,24 +171,11 @@ img { max-width: 100%; display: block; }
 }
 .header__logo:hover { opacity: 0.85; }
 
-.header__logo-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
+.header__logo-img {
   height: 2.25rem;
+  width: auto;
   border-radius: var(--radius-xs);
-  background: linear-gradient(135deg, var(--accent), #ea580c);
   flex-shrink: 0;
-  box-shadow: 0 0 14px rgba(249, 115, 22, 0.25);
-}
-
-.header__logo-text {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--white-bright);
-  letter-spacing: 0.1em;
 }
 
 /* Desktop nav */
@@ -994,22 +981,10 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 0.5rem;
 }
-.footer__logo-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
+.footer__logo-img {
   height: 1.75rem;
+  width: auto;
   border-radius: var(--radius-xs);
-  background: var(--accent);
-  flex-shrink: 0;
-}
-.footer__logo-text {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: 0.1em;
 }
 .footer__copy {
   font-size: 0.72rem;
