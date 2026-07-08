@@ -63,7 +63,7 @@
 
   /* ─── Появление элементов при скролле ─── */
   var revealElements = document.querySelectorAll(
-    '.section__header, .card, .step, .faq__item, .contacts-card, .contacts-card__banner'
+    '.section__header, .cards, .step, .faq__item, .contacts-card, .discount-banner'
   );
 
   revealElements.forEach(function (el) {

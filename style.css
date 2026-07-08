@@ -914,7 +914,7 @@ img { max-width: 100%; display: block; }
   margin-top: 0.25rem;
 }
 
-.contacts-card__banner {
+.discount-banner {
   margin-top: 1.5rem;
   border-radius: var(--radius-sm);
   background: linear-gradient(135deg, rgba(249, 115, 22, 0.06), rgba(249, 115, 22, 0.12));
@@ -924,7 +924,7 @@ img { max-width: 100%; display: block; }
   position: relative;
   overflow: hidden;
 }
-.contacts-card__banner::before {
+.discount-banner::before {
   content: '';
   position: absolute;
   top: 0; left: -100%;
@@ -937,7 +937,7 @@ img { max-width: 100%; display: block; }
   50%, 100% { left: 150%; }
 }
 
-.contacts-card__discount {
+.discount-banner__percent {
   font-family: var(--font-heading);
   font-size: 2.25rem;
   font-weight: 700;
@@ -945,16 +945,11 @@ img { max-width: 100%; display: block; }
   text-shadow: 0 0 25px rgba(249, 115, 22, 0.25);
   line-height: 1;
 }
-.contacts-card__banner-title {
+.discount-banner__title {
   margin-top: 0.5rem;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--white);
-}
-.contacts-card__banner-hint {
-  margin-top: 0.25rem;
-  font-size: 0.75rem;
-  color: var(--muted);
 }
 
 .contacts-grid {
@@ -981,8 +976,8 @@ img { max-width: 100%; display: block; }
 }
 
 @media (min-width: 640px) {
-  .contacts-card__discount { font-size: 2.75rem; }
-  .contacts-card__banner { padding: 2rem 1.5rem; }
+  .discount-banner__percent { font-size: 2.75rem; }
+  .discount-banner { padding: 2rem 1.5rem; }
   .contact-item__icon { width: 3rem; height: 3rem; }
   .contact-item__value--link { font-size: 1.2rem; }
 }
@@ -1049,13 +1044,7 @@ img { max-width: 100%; display: block; }
   transform: translateY(0);
 }
 
-.cards .card:nth-child(1) { transition-delay: 0ms; }
-.cards .card:nth-child(2) { transition-delay: 70ms; }
-.cards .card:nth-child(3) { transition-delay: 140ms; }
-.cards .card:nth-child(4) { transition-delay: 210ms; }
-.cards .card:nth-child(5) { transition-delay: 280ms; }
-.cards .card:nth-child(6) { transition-delay: 350ms; }
-.cards .card:nth-child(7) { transition-delay: 420ms; }
+/* cards animate together — no stagger */
 
 .steps .step:nth-child(1) { transition-delay: 0ms; }
 .steps .step:nth-child(2) { transition-delay: 80ms; }
@@ -1085,5 +1074,5 @@ img { max-width: 100%; display: block; }
   .step__circle svg { width: 18px; height: 18px; }
   .faq__question { padding: 1rem; font-size: 0.85rem; }
   .contact-item__value--link { font-size: 1rem; }
-  .contacts-card__discount { font-size: 2rem; }
+  .discount-banner__percent { font-size: 2rem; }
 }
