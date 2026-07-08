@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════
-   SD Garage — Minimal JS
-   Mobile menu toggle, smooth scroll
+   SD Garage — JS v2
+   Mobile menu, scroll header, reveal animations
    ═══════════════════════════════════════════ */
 
 (function () {
@@ -15,25 +15,37 @@
     burger.addEventListener('click', function () {
       var isOpen = mobileMenu.classList.toggle('is-open');
       burger.setAttribute('aria-expanded', isOpen);
-      burgerIcon.textContent = isOpen ? '✕' : '☰';
+      burgerIcon.textContent = isOpen ? '\u2715' : '\u2630';
     });
 
-    // Close mobile menu when a link is clicked
+    /* Закрыть мобильное меню при клике на ссылку */
     var mobileLinks = mobileMenu.querySelectorAll('a[href^="#"]');
     mobileLinks.forEach(function (link) {
       link.addEventListener('click', function () {
         mobileMenu.classList.remove('is-open');
         burger.setAttribute('aria-expanded', 'false');
-        burgerIcon.textContent = '☰';
+        burgerIcon.textContent = '\u2630';
       });
     });
   }
 
-  /* ─── FAQ accordion: rotate + to × is handled via CSS (details[open]) ─── */
-  /* No additional JS needed — native <details>/<summary> with CSS rotation */
+  /* ─── Header scroll effect ─── */
+  var header = document.getElementById('header');
+  var scrollThreshold = 50;
 
-  /* ─── Smooth scroll is handled by CSS scroll-behavior: smooth ─── */
-  /* Fallback for older browsers: */
+  function onScroll() {
+    if (!header) return;
+    if (window.scrollY > scrollThreshold) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ─── Smooth scroll ─── */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       var targetId = this.getAttribute('href');
@@ -45,4 +57,36 @@
       }
     });
   });
+
+  /* ─── Reveal on scroll (Intersection Observer) ─── */
+  var revealElements = document.querySelectorAll(
+    '.section__header, .card, .step, .faq__item, .contacts-card, .contacts-card__banner'
+  );
+
+  revealElements.forEach(function (el) {
+    el.classList.add('reveal');
+  });
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    /* Фоллбэк — показать всё сразу */
+    revealElements.forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
 })();
