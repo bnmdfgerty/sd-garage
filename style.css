@@ -71,7 +71,6 @@ img { max-width: 100%; display: block; }
 }
 @media (min-width: 640px) { .container { padding: 0 1.5rem; } }
 @media (min-width: 1024px) { .container { padding: 0 2rem; } }
-.container--narrow { max-width: 720px; }
 
 /* ─── Buttons ─── */
 .btn {
@@ -927,14 +926,15 @@ img { max-width: 100%; display: block; }
 .discount-banner::before {
   content: '';
   position: absolute;
-  top: 0; left: -100%;
+  top: 0; left: 0;
   width: 50%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.05), transparent);
   animation: shimmer 4s ease-in-out infinite;
+  will-change: transform;
 }
 @keyframes shimmer {
-  0% { left: -100%; }
-  50%, 100% { left: 150%; }
+  0% { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(300%); }
 }
 
 .discount-banner__percent {
