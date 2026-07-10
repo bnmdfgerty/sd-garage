@@ -209,14 +209,19 @@ img { max-width: 100%; display: block; }
   gap: 0.5rem;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #1c0a00;
+  color: #fff;
   background: var(--accent);
   padding: 0.45rem 0.85rem;
   border-radius: var(--radius-xs);
   transition: all var(--transition);
   white-space: nowrap;
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.2), 0 2px 8px rgba(0,0,0,0.3);
 }
-.header__phone:hover { background: #ea580c; }
+.header__phone:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.35), 0 4px 16px rgba(0,0,0,0.4);
+  transform: translateY(-1px);
+}
 .header__phone svg { flex-shrink: 0; }
 
 /* Burger — три линии */
