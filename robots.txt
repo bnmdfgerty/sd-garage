@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://bnmdfgerty.github.io/sd-garage/sitemap.xml
+Sitemap: https://sd-garage102.ru/sitemap.xml
 
 User-agent: Yandex
 Allow: /
