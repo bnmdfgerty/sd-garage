@@ -172,7 +172,7 @@ img { max-width: 100%; display: block; }
 .header__logo:hover { opacity: 0.85; }
 
 .header__logo-img {
-  height: 2.25rem;
+  height: 1rem;
   width: auto;
   border-radius: var(--radius-xs);
   flex-shrink: 0;
@@ -1004,7 +1004,7 @@ img { max-width: 100%; display: block; }
   gap: 0.5rem;
 }
 .footer__logo-img {
-  height: 1.75rem;
+  height: 1rem;
   width: auto;
   border-radius: var(--radius-xs);
 }
